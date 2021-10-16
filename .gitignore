@@ -1,0 +1,5 @@
+__pycache__
+env
+Tensorflow
+Tensorflow-lite/detections.txt
+speech.mp3

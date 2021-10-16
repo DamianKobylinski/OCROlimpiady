@@ -1,0 +1,8 @@
+tensorflow
+opencv-python
+pyqt5
+lxml
+pycocotools
+typeguard
+gtts
+playsound
