@@ -5,8 +5,8 @@ from PIL import Image
 import struct
 import cv2
 
-RPI_HOST = '127.0.0.1'
-RPI_PORT = 6789
+SERVER_HOST = '127.0.0.1'
+SERVER_PORT = 6789
 
 def send_img(connect):
     cap = cv2.VideoCapture(0)

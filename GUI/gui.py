@@ -5,6 +5,7 @@ import communication as com
 import threading
 import struct
 import pickle
+import ai
 
 RPI_HOST = '127.0.0.1'
 RPI_PORT = 6789
@@ -14,6 +15,7 @@ class MainApplication(tk.Frame):
     def __init__(self, parent, *args, **kwargs):
         tk.Frame.__init__(self, parent, *args, **kwargs)
         self.parent = parent
+        self.ai_detect = ai.AI()
         self.parent.protocol("WM_DELETE_WINDOW", self.on_close)
         # TODO sprawdzic czy da sie uzyc tylko connected
         self.net_running = True
@@ -101,10 +103,11 @@ class MainApplication(tk.Frame):
 
     def update_image(self, pickled):
         unpickled = pickle.loads(pickled)
-        img = ImageTk.PhotoImage(Image.fromarray(unpickled))
+        detected_img = self.ai_detect.detect(unpickled)
+        img = ImageTk.PhotoImage(Image.fromarray(detected_img))
         self.image.config(image=img)
         self.image.panel = img
-    
+
     def on_close(self):
         self.net_running = False
 
