@@ -40,7 +40,7 @@ def recv_thrd(connect):
 
 
 conn = com.Communication()
-conn.Host(RPI_HOST, RPI_PORT)
+conn.Host(SERVER_HOST, SERVER_PORT)
 thread = threading.Thread(target=recv_thrd, args=(conn,))
 thread.start()
 thread.join()
