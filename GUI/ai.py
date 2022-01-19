@@ -14,7 +14,7 @@ class AI:
         self.detection_model = model_builder.build(model_config=configs['model'], is_training=False)
         ckpt = tf.compat.v2.train.Checkpoint(model=self.detection_model)
         ckpt.restore(os.path.join(cfg.paths['CHECKPOINT_PATH'],
-                'ckpt-3')).expect_partial()
+                'ckpt-6')).expect_partial()
         self.category_index = label_map_util.create_category_index_from_labelmap(
                 cfg.files['LABELMAP'])
     
@@ -41,7 +41,7 @@ class AI:
                    self.category_index,
                    use_normalized_coordinates=True,
                    max_boxes_to_draw=5,
-                   min_score_thresh=.8,
+                   min_score_thresh=.3,
                    agnostic_mode=False)
 
         return image_np_with_detections
